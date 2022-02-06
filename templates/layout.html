@@ -46,7 +46,7 @@
     <!---------- GOOGLE FONTS ----------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merienda+One&family=Ubuntu:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Poppins&family=Ubuntu:wght@500;700&display=swap" rel="stylesheet">
 
     <!---------- CUSTOM STYLESHEET ------------->
     <link rel="stylesheet" href="{{url_for('static',filename='css/layout.css')}}">
@@ -77,10 +77,10 @@
                     <a href="{{url_for('home')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='home' else ''}}" title='Home'>Home</a>
                 </li>
                 <li>
-                    <a href="{{url_for('login')}}" class="navigation__tab navigation__btn btn__white" title='Login'>Login</a>
+                    <a href="{{url_for('login')}}" class="navigation__tab btn btn__white" title='Login'>Login</a>
                 </li>
                 <li>
-                    <a href="{{url_for('signup')}}" class="navigation__tab navigation__btn btn__pink" title='Signup'>Signup</a>
+                    <a href="{{url_for('signup')}}" class="navigation__tab btn btn__pink" title='Signup'>Signup</a>
                 </li>
                 <li class="color__mode--toggler">
                     <span title='Change Color Mode' class="toggler__ball"></span>
@@ -105,7 +105,7 @@
 
     <!----------- CUSTOM SCRIPT ----------->
     <script>
-        // NAVIGATION TOGGLING FUNCTIONALITY
+        //  NAVIGATION TOGGLING FUNCTIONALITY
         const mainNavigation = document.querySelector('.navigation--main');
         const navShowBtn = document.querySelector('.navigation__show--btn');
         const navHideBtn = document.querySelector('.navigation__hide--btn');

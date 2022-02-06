@@ -1,5 +1,5 @@
 html {
-  font-size: 90%;
+  font-size: 100%;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -9,10 +9,11 @@ html {
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: unset;
 }
 
 :root {
+  /*!============ COLORS ==============*/
   --clr-blue-grey-700: hsl(200, 19%, 18%);
   --clr-pink-100: hsl(340, 72%, 92%);
   --clr-pink-200: hsl(340, 82%, 82%);
@@ -20,29 +21,55 @@ html {
   --clr-pink-500: hsl(340, 82%, 52%);
   --clr-pink-600: hsl(340, 82%, 42%);
   --clr-pink-light: hsl(340, 92%, 67%);
-  --clr-pink-800: hsl(340, 82%, 12%);
+  --clr-pink-800: hsla(340, 82%, 20%, 0.81);
   --clr-white: hsl(0, 100%, 100%);
   --body-bg: hsl(0, 100%, 100%);
+  --heading-clr: hsla(340, 82%, 20%, 0.81);
+  --text-clr: hsl(340, 82%, 62%);
+
+  /*!=========== FONT STACKS =============*/
   --font-lato: "Lato", sans-serif;
   --font-ubuntu: "Ubuntu", sans-serif;
-  --font-merienda-one: "Merienda One", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  /*!=========== FONT WEIGHTS ============*/
+  --font-wt-300: 300;
   --font-wt-400: 400;
   --font-wt-500: 500;
   --font-wt-700: 700;
+
+  /*!============ LINE HEIGHTS ============*/
+  --body-lh: 1.6;
+  --heading-lh: 1.1;
+
+  /*!================ RADII ================*/
+  --rad-4: 4px;
+  --rad-6: 6px;
+  --rad-round: 50%;
 }
 
 .dark--mode {
   --body-bg: hsl(340, 82%, 12%);
+  --heading-clr: hsl(340, 72%, 92%);
+  --text-clr: hsl(340, 82%, 82%);
 }
 
 body {
-  font: var(--font-wt-400) 1rem/160% var(--font-lato);
+  font: var(--font-wt-400) 1rem / var(--body-lh) var(--font-poppins);
   background-color: var(--body-bg);
   position: relative;
 
-  &::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+  @supports (block-size: 12px) or (inline-size: 12px) {
+    &::-webkit-scrollbar {
+      inline-size: 12px;
+      block-size: 12px;
+    }
+  }
+  @supports not ((block-size: 12px) or (inline-size: 12px)) {
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
   }
 
   &::-webkit-scrollbar-track {
@@ -58,36 +85,63 @@ body {
 }
 
 /*!============== GENERAL ==============*/
-.logo--md {
-  height: 4rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--heading-lh);
+}
+
+@supports (padding-block: 0) or (padding-inline: 0) {
+  .btn {
+    padding-block: 0.5rem;
+    padding-inline: 1.1rem;
+    border-radius: var(--rad-4);
+    transition: all 0.3s ease;
+    font : {
+      family: var(--font-ubuntu);
+      size: 1.1rem;
+    }
+  }
+}
+
+@supports not ((padding-block: 0) or (padding-inline: 0)) {
+  .btn {
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--rad-4);
+    transition: all 0.3s ease;
+    font : {
+      family: var(--font-ubuntu);
+      size: 1.1rem;
+    }
+  }
 }
 
 .btn__pink {
-  --border-color: var(--clr-pink-500);
   background-color: var(--clr-pink-600);
-  color: var(--clr-white) !important;
-  border: 2px solid var(--border-color);
-  transition: all 0.3s ease;
+  color: var(--clr-white);
+  border: 2px solid var(--clr-pink-500);
 
   &:hover,
   &:focus {
+    border-color: var(--clr-pink-600);
     background-color: var(--clr-white);
-    color: var(--clr-pink-800) !important;
-    --border-color: var(--clr-pink-600);
+    color: var(--clr-pink-800);
   }
 }
 
 .btn__white {
-  --border-color: var(--clr-pink-600);
-  border: 2px solid var(--border-color);
+  color: var(--clr-pink-800);
+  border: 2px solid var(--clr-pink-600);
   background-color: var(--clr-white);
-  transition: all 0.3s ease;
 
   &:hover,
   &:focus {
-    --border-color: var(--clr-pink-500);
+    border-color: var(--clr-pink-500);
     background-color: var(--clr-pink-600);
-    color: var(--clr-white) !important;
+    color: var(--clr-white);
   }
 }
 
@@ -99,12 +153,27 @@ header {
   justify-content: space-between;
   align-items: center;
   column-gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .logo {
   border-radius: 5px;
   display: block;
   box-shadow: 0 0 2px var(--clr-blue-grey-700);
+
+  @supports (block-size: 0) {
+    &--md {
+      block-size: 4rem;
+    }
+  }
+  @supports not (block-size: 0) {
+    &--md {
+      height: 4rem;
+    }
+  }
 }
 
 /*!=========== MAIN NAVIGATION ==========*/
@@ -119,7 +188,7 @@ header {
 
   &--show {
     display: block;
-    border-bottom-left-radius: 4px;
+    border-bottom-left-radius: var(--rad-4);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   }
 
@@ -151,13 +220,12 @@ header {
         top: 0.15rem;
         left: 0.15rem;
         width: 1.4rem;
-        border-radius: 50%;
+        border-radius: var(--rad-round);
         background-color: var(--clr-white);
         transition: transform 100ms ease, background-color 100ms ease;
       }
 
-      &:hover span,
-      &:focus span {
+      :is(&:hover, &:focus) span {
         cursor: pointer;
       }
     }
@@ -185,7 +253,7 @@ header {
       font-size: 2.1rem;
       color: var(--clr-pink-800);
       padding: 1px;
-      border-radius: 4px;
+      border-radius: var(--rad-4);
     }
 
     &:hover,
@@ -193,8 +261,7 @@ header {
       cursor: pointer;
     }
 
-    &:hover ion-icon,
-    &:focus ion-icon {
+    :is(&:hover, &:focus) ion-icon {
       opacity: 0.7;
     }
   }
@@ -205,16 +272,20 @@ header {
 
   &__tab {
     display: block;
-    text-decoration: none;
-    color: var(--clr-pink-800);
-    font-family: var(--font-ubuntu);
-    text-transform: uppercase;
-    font-size: 1.1rem;
+    text : {
+      decoration: none;
+      transform: uppercase;
+    }
+    font : {
+      family: var(--font-ubuntu);
+      size: 1.1rem;
+    }
     letter-spacing: 0.5px;
   }
 
   &__link {
     transition: background 300ms ease;
+    color: var(--clr-pink-800);
 
     &:hover,
     &:focus {
@@ -225,11 +296,6 @@ header {
 
   &__tab--active {
     background: linear-gradient(45deg, var(--clr-pink-600), currentColor) 0% 100%/100% 3px no-repeat;
-  }
-
-  &__btn {
-    padding: 0.5rem 1.1rem;
-    border-radius: 4px;
   }
 }
 

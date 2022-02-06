@@ -5,4 +5,30 @@
 {% endblock %}
 
 {% block body %}
+    <main class="container container--main">
+        
+        <section class="container__text--wrapper">
+            <h1 class="container__main--heading">
+                <span>Manage Your Work</span>
+                <span>With Simplicity</span>
+            </h1>
+
+            <h5 class="container__sub--heading">
+                <span>MyTaskManager is the platform which will make it easy </span>
+                <span>to manage your daily work</span>
+            </h5>
+
+            <a class="btn btn__pink">
+                <span>Get Started</span>
+                <span>&raquo;</span>
+            </a>
+        </section>
+
+        <div class="container__image--wrapper">
+            <img src="{{url_for('static',filename='site-images/Management.png')}}" alt="Illustration showing work management">
+        </div>
+
+    </main>
+
+    <section class="container container--section"></section>
 {% endblock %}
