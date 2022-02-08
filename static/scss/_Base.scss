@@ -1,0 +1,140 @@
+$base-padding: 0.5rem;
+$base-margin: 0.5rem;
+$base-radius: 20px;
+$base-font: 1rem;
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  /*================ Colors ==================*/
+  --clr-blue-100: hsl(230, 60%, 90%);
+  --clr-blue-200: hsl(230, 70%, 80%);
+  --clr-blue-300: hsl(230, 70%, 70%);
+  --clr-blue-500: hsl(230, 70%, 50%);
+  --clr-blue-600: hsl(230, 60%, 40%);
+  --clr-white: hsl(0, 100%, 100%);
+  --body-bg-color-1: rgb(236, 236, 236);
+  --body-bg-color-2: #fff9e8;
+  --home-main-bg-color: hsl(0, 100%, 100%);
+  --section-one-bg-color: #eaf0fd;
+  --section-two-bg-color: #f5f5ff;
+  --text-clr: #637181;
+  --heading-clr: #3f485a;
+  --form-bg: #eaf0fd;
+  --form-label-clr: #272e3b;
+  --form-link-clr: #383c5e;
+  --form-input-bg-clr: hsl(0, 100%, 100%);
+
+  /*!=========== FONT STACKS =============*/
+  --font-lato: "Lato", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  /*!=========== FONT WEIGHTS ============*/
+  --font-wt-400: 400;
+  --font-wt-500: 500;
+  --font-wt-700: 700;
+
+  /*!============ LINE HEIGHTS ============*/
+  --body-lh: 1.6;
+  --heading-lh: 1.1;
+
+  /*!================ RADII ================*/
+  --rad-4: 4px;
+  --rad-6: 6px;
+  --rad-round: 50%;
+}
+
+.dark--mode {
+  --body-bg-color-1: #252b42;
+  --body-bg-color-2: #262642;
+  --home-main-bg-color: #070f20;
+  --section-one-bg-color: #12203f;
+  --section-two-bg-color: #091a38;
+  --heading-clr: #e7efff;
+  --text-clr: hsl(236, 12%, 74%);
+  --form-bg: #0f1531;
+  --form-label-clr: #f1f6ff;
+  --form-link-clr: #b4b9ff;
+  --form-input-bg-clr: #12203f;
+}
+
+body {
+  font: var(--font-wt-400) $base-font / var(--body-lh) var(--font-montserrat);
+  background: repeating-linear-gradient(
+    50deg,
+    var(--body-bg-color-1) 3rem,
+    var(--body-bg-color-2) 4.5rem
+  );
+  position: relative;
+}
+
+@supports (block-size: 13px) and (inline-size: 13px) {
+  ::-webkit-scrollbar {
+    inline-size: 13px;
+    block-size: 13px;
+  }
+}
+@supports not ((block-size: 13px) and (inline-size: 13px)) {
+  ::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+  }
+}
+::-webkit-scrollbar-track {
+  background-color: var(--clr-white);
+  box-shadow: 2px 0 3px 2px rgba(0, 0, 0, 0.1) inset;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--clr-blue-300);
+  border-radius: var(--rad-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--heading-lh);
+}
+
+a {
+  text-decoration: none;
+}
+
+/*============= KEYFRAMES FOR SLIDING ANIMATION =============*/
+@keyframes left-slide-animation {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes right-slide-animation {
+  0% {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}

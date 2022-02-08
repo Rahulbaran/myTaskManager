@@ -1,24 +1,21 @@
 {% extends 'layout.html' %}
 {% set active_page='home' %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
-{% endblock %}
 
 {% block body %}
-    <main class="container container--main">
+    <main class="container container--home--main">
         
         <section class="container__text--wrapper">
             <h1 class="container__main--heading">
-                <span>Manage Your Work</span>
-                <span>With Simplicity</span>
+                <span>Manage your Work</span>
+                <span>with Simplicity</span>
             </h1>
 
             <h5 class="container__sub--heading">
-                <span>MyTaskManager is the platform which will make it easy </span>
-                <span>to manage your daily work</span>
+                <span>MyTaskManager is a platform which make</span>
+                <span>it easy to manage your daily works</span>
             </h5>
 
-            <a class="btn btn__pink">
+            <a href="{{url_for('login')}}" class="btn btn--secondary btn--hover--secondary--light--3 txt-white">
                 <span>Get Started</span>
                 <span>&raquo;</span>
             </a>
@@ -30,5 +27,70 @@
 
     </main>
 
-    <section class="container container--section"></section>
+    <section class="container container--home--section container--home--section--one">
+        <div class="container__text--wrapper">
+            <h2 class="container__main--heading">
+                <span>Grow your Productivity</span>
+            </h2>
+
+            <h5 class="container__sub--heading">
+                <span>Easy management of daily works will grow</span>
+                <span>productivity & save your time</span>
+            </h5>
+
+        </div>
+
+        <div class="container__image--wrapper">
+            <img src="{{url_for('static',filename='site-images/Growth.png')}}" alt="Illustration showing growth in productivity">
+        </div>
+    </section>
+
+    <section class="container container--home--section container--home--section--two">
+        <div class="container__text--wrapper">
+            <h2 class="container__main--heading">
+                <span>Touch the Sky of</span>
+                <span>Success</span>
+            </h2>
+
+            <h5 class="container__sub--heading">
+                <span>Growth in productivity will make you</span>
+                <span>successful in your career</span>
+            </h5>
+
+        </div>
+
+        <div class="container__image--wrapper">
+            <img src="{{url_for('static',filename='site-images/Celebrating-Success.png')}}" alt="Illustration showing success in career">
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        // SLIDING FUNCTIONALITY USING INTERSECTION OBSERVER API
+        const homeSections = document.querySelectorAll('.container--home--section'); 
+
+        const options = {
+            rootMargin : "0px",
+            threshold : .15
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting && entry.intersectionRatio > .15) {
+                    const sectionImg = entry.target.querySelector('.container__image--wrapper');
+                    const sectionTxt = entry.target.querySelector('.container__text--wrapper');
+                        sectionImg.style.transform = 'translateX(0)';
+                        sectionImg.style.opacity = 1;
+                        sectionTxt.style.transform = 'translateX(0)';
+                        sectionTxt.style.opacity = 1;
+                }
+            })
+        }, options);
+
+        homeSections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
 {% endblock %}

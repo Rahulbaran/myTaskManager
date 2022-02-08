@@ -1,0 +1,173 @@
+@use "sass:math";
+
+/*!================================ HEADER STYLING =====================================*/
+header {
+  @include flex(space-between, center);
+  column-gap: $base-margin * 2;
+  padding: $base-padding $base-padding * 3;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  border-radius: math.div($base-radius, 4);
+  display: block;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+
+  @supports (block-size: 0) {
+    &--md {
+      block-size: 3.5rem;
+    }
+  }
+  @supports not (block-size: 0) {
+    &--md {
+      height: 3.5rem;
+    }
+  }
+}
+
+/*!=========== MAIN NAVIGATION ==========*/
+.navigation {
+  &--main {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &--show {
+    display: block;
+    border-bottom-left-radius: var(--rad-4);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  }
+
+  &__menu {
+    @include flex(flex-start, center, column);
+    gap: $base-margin * 2 $base-margin * 1.7;
+    position: relative;
+    list-style-type: none;
+    padding: $base-padding * 8 $base-padding * 6 $base-padding * 4;
+
+    .color__mode--toggler {
+      position: relative;
+      background-color: var(--clr-white);
+      width: 3.5rem;
+      height: 1.7rem;
+      border-radius: $base-radius * 2;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 250ms ease;
+
+      &.color__mode--toggler--dark {
+        background-color: var(--clr-blue-600);
+      }
+
+      span {
+        position: absolute;
+        height: 1.4rem;
+        top: 0.15rem;
+        left: 0.15rem;
+        width: 1.4rem;
+        border-radius: var(--rad-round);
+        background-color: var(--clr-blue-600);
+        transition: transform 250ms ease, background-color 250ms ease;
+      }
+
+      :is(&:hover, &:focus) span {
+        cursor: pointer;
+      }
+    }
+
+    span.toggler__ball--dark {
+      transform: translateX(1.8rem);
+      background-color: var(--clr-white);
+    }
+  }
+
+  &__hide--btn--wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__show--btn,
+  &__hide--btn {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+
+    ion-icon {
+      border: 2px solid var(--clr-blue-600);
+      font-size: $base-font * 2.1;
+      color: var(--clr-blue-600);
+      padding: 1px 2px;
+      border-radius: var(--rad-4);
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+
+    :is(&:hover, &:focus) ion-icon {
+      opacity: 0.7;
+    }
+  }
+
+  &__hide--btn ion-icon {
+    font-size: $base-font * 1.4;
+  }
+
+  &__tab {
+    display: inline-block;
+    text : {
+      decoration: none;
+      transform: uppercase;
+    }
+    font-family: var(--font-ubuntu);
+    letter-spacing: 0.75px;
+  }
+
+  &__link {
+    font-weight: var(--font-wt-500);
+    transition: background 300ms ease;
+
+    &:hover,
+    &:focus {
+      background: linear-gradient(45deg, currentColor, var(--clr-blue-500)) 0% 100%/100% 3px
+        no-repeat;
+    }
+  }
+
+  &__tab--active {
+    background: linear-gradient(45deg, currentColor, var(--clr-blue-500)) 0% 100%/100% 3px no-repeat;
+  }
+}
+
+/*!=========== MEDIA QUERIES ============*/
+@media all and (min-width: 720px) {
+  html {
+    font-size: 100%;
+  }
+
+  .navigation__show--btn,
+  .navigation__hide--btn--wrapper {
+    display: none;
+  }
+
+  .navigation--main {
+    position: relative;
+    display: block;
+    box-shadow: none;
+  }
+
+  .navigation__menu {
+    flex-direction: row;
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 1260px) {
+  html {
+    font-size: 110%;
+  }
+}

@@ -1,0 +1,121 @@
+@use "sass:math";
+
+/*!=========================== Signup Form ============================*/
+.form {
+  &--container {
+    @include flex(flex-start, center, column);
+    animation: left-slide-animation 1700ms ease-out;
+
+    @supports (min-block-size: 0) and (padding-block: 0) {
+      & {
+        min-block-size: calc(100vh - 4.5rem);
+        padding-inline: $base-padding;
+        padding-block: $base-padding * 8 $base-padding * 4;
+      }
+    }
+    @supports not (min-block-size: 0) {
+      & {
+        min-height: calc(100vh - 4.5rem);
+        padding: $base-padding * 8 $base-padding $base-padding * 4;
+      }
+    }
+    section {
+      width: 480px;
+      max-width: 95%;
+      margin: 0 auto;
+      background-color: var(--form-bg);
+      padding: $base-padding * 3;
+      border-radius: math.div($base-radius, 2) $base-radius * 2;
+      border: 1px solid var(--clr-blue-100);
+      box-shadow: 3px 6px 25px -5px rgba(0, 0, 0, 0.25);
+      position: relative;
+
+      h1 {
+        display: inline-block;
+        position: absolute;
+        top: -2.35rem;
+        left: 48%;
+        transform: translateX(-48%);
+        text-align: center;
+        background-color: inherit;
+        z-index: -1;
+        padding: $base-padding $base-padding * 1.5;
+        border-top: {
+          left-radius: $base-radius;
+          right-radius: $base-radius;
+        }
+        color: var(--heading-clr);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        font-size: $base-font * 1.17;
+        border: 1px solid var(--clr-blue-100);
+      }
+    }
+  }
+
+  &__group {
+    margin-bottom: $base-margin * 0.8;
+    @include flex(flex-start, flex-start, column);
+
+    @supports (min-inline-size: 100%) and (padding-inline: 0.5rem) {
+      input {
+        min-inline-size: 100%;
+        padding-inline: $base-padding;
+        padding-block: $base-padding * 1.2;
+      }
+    }
+
+    @supports not ((min-inline-size: 100%) and (padding-inline: 0.5rem)) {
+      min-width: 100%;
+      padding: $base-padding * 1.2 $base-padding;
+    }
+
+    label,
+    input {
+      letter-spacing: 0.5px;
+      color: var(--form-label-clr);
+    }
+
+    label {
+      font-size: $base-font * 0.85;
+      line-height: 1.3;
+      font-weight: var(--font-wt-500);
+    }
+
+    input {
+      font-size: $base-font * 0.95;
+      border-radius: var(--rad-4);
+      border: 1px solid var(--clr-blue-100);
+      font-family: "Lato", sans-serif;
+      background-color: var(--form-input-bg-clr);
+    }
+  }
+
+  &__submit--group input {
+    font : {
+      family: inherit;
+      size: $base-font;
+    }
+    text-transform: uppercase;
+    border: none;
+    margin-top: $base-margin;
+    letter-spacing: 0.5px;
+    padding-block: $base-padding * 1.5;
+  }
+
+  &__link--wrapper {
+    p {
+      font-size: $base-font * 0.9;
+      color: var(--form-label-clr);
+      margin-top: $base-margin;
+    }
+    a {
+      color: var(--form-link-clr);
+      font-weight: var(--font-wt-500);
+
+      &:hover,
+      &:focus {
+        text-decoration: underline 2px currentColor;
+      }
+    }
+  }
+}

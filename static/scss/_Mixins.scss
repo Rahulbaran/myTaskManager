@@ -1,0 +1,15 @@
+@mixin flex($just, $align, $dir: row) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+  flex-direction: $dir;
+}
+
+@mixin section-mixin($color) {
+  background-color: var($color);
+  row-gap: $base-margin * 4;
+
+  div:first-child {
+    order: 1;
+  }
+}

@@ -1,10 +1,11 @@
-import os
-from flask import Flask, render_template, url_for, request, abort, redirect, render_template_string
+from flask import Flask, render_template, url_for, request, abort, redirect
 from flask_sqlalchemy import SQLAlchemy
+from config import DevConfig
+from form import SignUpForm, LoginForm
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.urandom(16).hex()
+app.config.from_object(DevConfig)
 
 
 # ROUTES
@@ -16,12 +17,14 @@ def home():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    return render_template("signup.html", title="Sign Up")
+    form = SignUpForm()
+    return render_template("signup.html", title="Sign Up", form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html", title="Login")
+    form = LoginForm()
+    return render_template("login.html", title="Login", form=form)
 
 
 if __name__ == "__main__":

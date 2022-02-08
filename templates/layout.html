@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="robots" content="index, follow">
 
-    <!---------- SOCIAL MEDIA META TAGS ---------->
+    <!---------------------- SOCIAL MEDIA META TAGS ----------------------->
     <meta property="og:title" content="" />
     <meta property="og:description" content="" />
     <meta property="og:image" content="" />
@@ -20,10 +20,10 @@
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="">
 
-    <!------------- PAGE TITLE ------------->
+    <!-------------------------- PAGE TITLE ----------------------------->
     <title>{{title}} | myTaskManager</title>
 
-    <!---------------- FAVICON ---------------->
+    <!--------------------------- FAVICON ------------------------------->
     <link rel="apple-touch-icon" sizes="57x57" href="{{url_for('static',filename='site-images/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{url_for('static',filename='site-images/favicon/apple-icon-60x60.png')}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='site-images/favicon/apple-icon-72x72.png')}}">
@@ -43,21 +43,24 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <!---------- GOOGLE FONTS ----------->
+    <!----------------------- GOOGLE FONTS ------------------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Poppins&family=Ubuntu:wght@500;700&display=swap" rel="stylesheet">
 
-    <!---------- CUSTOM STYLESHEET ------------->
-    <link rel="stylesheet" href="{{url_for('static',filename='css/layout.css')}}">
+    <!------------- STYLSHEET CONTAINING UTILITY CLASSES ---------------->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/sparsm.css')}}">
 
-    <!--------- BLOCK FOR STYLESHEET ---------->
-    {% block stylesheet %}
+    <!----------------------- CUSTOM STYLESHEET ---------------------->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+    <!------------------- BLOCK FOR CUSTOM STYLES  ------------------->
+    {% block style %}
     {% endblock %}
 </head>
 <body>
     
-    <header>
+    <header class="bg-primary-light-9">
         <a href="{{url_for('home')}}">
             <img src="{{url_for('static',filename='site-images/logo.png')}}" alt="Website Logo" class="logo logo--md">
         </a>
@@ -66,7 +69,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
 
-        <nav class="navigation--main">
+        <nav class="bg-primary-light-9 navigation--main">
             <ul class="navigation__menu">
                 <li class="navigation__hide--btn--wrapper">
                     <button class="navigation__hide--btn">
@@ -74,13 +77,13 @@
                     </button>
                 </li>
                 <li>
-                    <a href="{{url_for('home')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='home' else ''}}" title='Home'>Home</a>
+                    <a href="{{url_for('home')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='home' else ''}} txt-primary" title='Home'>Home</a>
                 </li>
                 <li>
-                    <a href="{{url_for('login')}}" class="navigation__tab btn btn__white" title='Login'>Login</a>
+                    <a href="{{url_for('login')}}" class="navigation__tab btn btn--secondary btn--hover--secondary--light--3 txt-white" title='Login'>Login</a>
                 </li>
                 <li>
-                    <a href="{{url_for('signup')}}" class="navigation__tab btn btn__pink" title='Signup'>Signup</a>
+                    <a href="{{url_for('signup')}}" class="navigation__tab btn btn--primary btn--hover--primary--light--3 txt-white" title='Signup'>Signup</a>
                 </li>
                 <li class="color__mode--toggler">
                     <span title='Change Color Mode' class="toggler__ball"></span>
@@ -140,7 +143,7 @@
                 toggler.classList.add('color__mode--toggler--dark');
                 document.documentElement.classList.add("dark--mode");
             }
-        }
+        };
 
     </script>
 </body>
