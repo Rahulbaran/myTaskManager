@@ -20,19 +20,21 @@ html {
 
 :root {
   /*================ Colors ==================*/
-  --clr-blue-100: hsl(230, 60%, 90%);
-  --clr-blue-200: hsl(230, 70%, 80%);
-  --clr-blue-300: hsl(230, 70%, 70%);
-  --clr-blue-500: hsl(230, 70%, 50%);
-  --clr-blue-600: hsl(230, 60%, 40%);
+  --clr-blue-100: hsl(250, 70%, 90%);
+  --clr-blue-200: hsl(250, 70%, 80%);
+  --clr-blue-300: hsl(250, 70%, 70%);
+  --clr-blue-600: hsl(250, 100%, 40%);
+  --clr-blue-900: #12203f;
   --clr-white: hsl(0, 100%, 100%);
+  --clr-yellow: hsl(40, 100%, 50%);
+  --clr-yellow-300: hsl(40, 100%, 70%);
   --body-bg-color-1: rgb(236, 236, 236);
   --body-bg-color-2: #fff9e8;
   --home-main-bg-color: hsl(0, 100%, 100%);
   --section-one-bg-color: #eaf0fd;
   --section-two-bg-color: #f5f5ff;
-  --text-clr: #637181;
-  --heading-clr: #3f485a;
+  --text-clr: #576370;
+  --heading-clr: #303746;
   --form-bg: #eaf0fd;
   --form-label-clr: #272e3b;
   --form-link-clr: #383c5e;
@@ -49,7 +51,7 @@ html {
 
   /*!============ LINE HEIGHTS ============*/
   --body-lh: 1.6;
-  --heading-lh: 1.1;
+  --heading-lh: 1;
 
   /*!================ RADII ================*/
   --rad-4: 4px;
@@ -58,9 +60,9 @@ html {
 }
 
 .dark--mode {
-  --body-bg-color-1: #252b42;
-  --body-bg-color-2: #262642;
-  --home-main-bg-color: #070f20;
+  --body-bg-color-1: #12203f;
+  --body-bg-color-2: #091a38;
+  --home-main-bg-color: #0d1a38;
   --section-one-bg-color: #12203f;
   --section-two-bg-color: #091a38;
   --heading-clr: #e7efff;
@@ -73,11 +75,7 @@ html {
 
 body {
   font: var(--font-wt-400) $base-font / var(--body-lh) var(--font-montserrat);
-  background: repeating-linear-gradient(
-    50deg,
-    var(--body-bg-color-1) 3rem,
-    var(--body-bg-color-2) 4.5rem
-  );
+  background: linear-gradient(50deg, var(--body-bg-color-1), var(--body-bg-color-2));
   position: relative;
 }
 
@@ -109,13 +107,18 @@ h4,
 h5,
 h6 {
   line-height: var(--heading-lh);
+  font-family: var(--font-lato);
 }
 
 a {
   text-decoration: none;
 }
 
-/*============= KEYFRAMES FOR SLIDING ANIMATION =============*/
+.txt-darkblue {
+  color: var(--clr-blue-900);
+}
+
+/*!============= KEYFRAMES FOR SLIDING ANIMATION =============*/
 @keyframes left-slide-animation {
   0% {
     transform: translateX(-100px);

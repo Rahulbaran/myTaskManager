@@ -52,23 +52,39 @@ header {
       position: relative;
       background-color: var(--clr-white);
       width: 3.5rem;
-      height: 1.7rem;
+      height: 1.9rem;
       border-radius: $base-radius * 2;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       transition: background-color 250ms ease;
 
       &.color__mode--toggler--dark {
-        background-color: var(--clr-blue-600);
+        background-color: var(--clr-blue-900);
+      }
+
+      ion-icon {
+        font-size: $base-font * 1.35;
+        position: absolute;
+        top: 0.3rem;
+        color: var(--clr-yellow);
+      }
+
+      ion-icon[name="sunny"] {
+        left: 0.2rem;
+      }
+
+      ion-icon + ion-icon {
+        right: 0.2rem;
+        color: var(--clr-yellow-300);
       }
 
       span {
         position: absolute;
-        height: 1.4rem;
-        top: 0.15rem;
-        left: 0.15rem;
+        height: 1.5rem;
+        top: 0.2rem;
+        left: 0.2rem;
         width: 1.4rem;
         border-radius: var(--rad-round);
-        background-color: var(--clr-blue-600);
+        background-color: var(--clr-blue-900);
         transition: transform 250ms ease, background-color 250ms ease;
       }
 
@@ -78,7 +94,7 @@ header {
     }
 
     span.toggler__ball--dark {
-      transform: translateX(1.8rem);
+      transform: translateX(1.6rem);
       background-color: var(--clr-white);
     }
   }
@@ -130,16 +146,17 @@ header {
   &__link {
     font-weight: var(--font-wt-500);
     transition: background 300ms ease;
+    color: var(--clr-blue-900);
 
     &:hover,
     &:focus {
-      background: linear-gradient(45deg, currentColor, var(--clr-blue-500)) 0% 100%/100% 3px
+      background: linear-gradient(45deg, var(--clr-blue-600), currentColor) 0% 100%/100% 3px
         no-repeat;
     }
   }
 
   &__tab--active {
-    background: linear-gradient(45deg, currentColor, var(--clr-blue-500)) 0% 100%/100% 3px no-repeat;
+    background: linear-gradient(45deg, var(--clr-blue-600), currentColor) 0% 100%/100% 3px no-repeat;
   }
 }
 

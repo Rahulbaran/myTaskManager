@@ -1,6 +1,6 @@
 @use "sass:math";
 
-/*!=========================== Signup Form ============================*/
+/*!=========================== Forms ============================*/
 .form {
   &--container {
     @include flex(flex-start, center, column);
@@ -33,7 +33,7 @@
       h1 {
         display: inline-block;
         position: absolute;
-        top: -2.35rem;
+        top: -2.33rem;
         left: 48%;
         transform: translateX(-48%);
         text-align: center;
@@ -97,7 +97,7 @@
     }
     text-transform: uppercase;
     border: none;
-    margin-top: $base-margin;
+    margin-top: $base-margin * 1.2;
     letter-spacing: 0.5px;
     padding-block: $base-padding * 1.5;
   }
