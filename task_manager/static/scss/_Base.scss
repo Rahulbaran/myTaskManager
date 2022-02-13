@@ -23,7 +23,7 @@ html {
   --clr-blue-100: hsl(250, 70%, 90%);
   --clr-blue-200: hsl(250, 70%, 80%);
   --clr-blue-300: hsl(250, 70%, 70%);
-  --clr-blue-600: hsl(250, 100%, 40%);
+  --clr-blue-600: hsl(250, 80%, 45%);
   --clr-blue-900: #12203f;
   --clr-white: hsl(0, 100%, 100%);
   --clr-yellow: hsl(40, 100%, 50%);
@@ -39,6 +39,7 @@ html {
   --form-label-clr: #272e3b;
   --form-link-clr: #383c5e;
   --form-input-bg-clr: hsl(0, 100%, 100%);
+  --error-clr: rgb(209, 20, 20);
 
   /*!=========== FONT STACKS =============*/
   --font-lato: "Lato", sans-serif;
@@ -51,7 +52,7 @@ html {
 
   /*!============ LINE HEIGHTS ============*/
   --body-lh: 1.6;
-  --heading-lh: 1;
+  --heading-lh: 1.1;
 
   /*!================ RADII ================*/
   --rad-4: 4px;

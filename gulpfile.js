@@ -8,27 +8,27 @@ const terser = require("gulp-terser");
 
 // scss Watch task
 const scssTask = function () {
-  return src("./static/scss/*.scss")
+  return src("./myTaskManager/static/scss/*.scss")
     .pipe(srcMaps.init())
     .pipe(scss())
     .pipe(postcss([cssnano(), prefixer()]))
     .pipe(srcMaps.write("."))
-    .pipe(dest("./static/css"));
+    .pipe(dest("./myTaskManager/static/css"));
 };
 
 // JS Watch Task
 const JSTask = function () {
-  return src("./static/js/*.js")
+  return src("./myTaskManager/static/js/*.js")
     .pipe(srcMaps.init())
     .pipe(terser())
     .pipe(srcMaps.write("."))
-    .pipe(dest("./static/minjs"));
+    .pipe(dest("./myTaskManager/static/minjs"));
 };
 
 // watch Task
 const watchTask = function () {
-  watch("./static/scss/*.scss", scssTask);
-  watch("./static/js/*.js", JSTask);
+  watch("./myTaskManager/static/scss/*.scss", scssTask);
+  watch("./myTaskManager/static/js/*.js", JSTask);
 };
 
 exports.default = series(scssTask, JSTask, watchTask);

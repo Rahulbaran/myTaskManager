@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+{% block style %}
+    <style>
+        .form__password--input {
+            width:100%;
+            position:relative;
+        }
+
+        .form__password--input ion-icon {
+            position:absolute;
+            top:58%;
+            right:.65rem;
+            transform:translateY(-58%);
+            font-size:1.2rem;
+            color: var(--form-label-clr);
+            cursor:pointer;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <main class="form--container">
+        <section>
+            <h1>Create account</h1>
+            <form class="form" autocomplete="off" spellcheck="false" method="post">
+                {{form.hidden_tag()}}
+
+                <div class="form__group">
+                    {{form.fullname.label}}
+                    {% if form.fullname.errors %}
+                    {{form.fullname(class="form__input--error")}}
+                    {% for error in form.fullname.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                    {% else %}
+                    {{form.fullname(placeholder="enter your fullname")}}
+                    {% endif %}
+                </div>
+
+                <div class="form__group">
+                    {{form.username.label}}
+                    {% if form.username.errors %}
+                    {{form.username(class="form__input--error")}}
+                    {% for error in form.username.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                    {% else %}
+                    {{form.username(placeholder="enter an username")}}
+                    {% endif %}
+                </div>
+
+                <div class="form__group">
+                    {{form.email.label}}
+                    {% if form.email.errors %}
+                    {{form.email(class="form__input--error")}}
+                    {% for error in form.email.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                    {% else %}
+                    {{form.email(placeholder="enter your email address")}}
+                    {% endif %}
+                    
+                </div>
+
+                <div class="form__group">
+                    {{form.password.label}}
+                    {% if form.password.errors %}
+                    <div class="form__password--input">
+                        {{form.password(class="form__input--error")}}
+                        <ion-icon name="eye"></ion-icon>
+                    </div>
+                    {% for error in form.password.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                    {% else %}
+                    <div class="form__password--input">
+                        {{form.password(placeholder="enter a password")}}
+                        <ion-icon name="eye"></ion-icon>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="form__group">
+                    {{form.reenter_password.label}}
+                    {% if form.reenter_password.errors %}
+                    {{form.reenter_password(class="form__input--error")}}
+                    {% for error in form.reenter_password.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                    {% else %}
+                    {{form.reenter_password(placeholder="reenter the password")}}
+                    {% endif %}
+                </div>
+
+                <div class="form__recaptcha--group" style="margin-block:.2rem;">
+                    {{form.recaptcha}}
+                </div>
+
+                <div class="form__submit--group">
+                    {{form.submit(class="btn btn--primary--dark--1 btn--hover--primary--light--2 txt-white")}}
+                </div>
+            </form>
+
+            <div class="form__link--wrapper">
+                <p>
+                    Already have an account? <a href="{{url_for('login')}}">login now</a>
+                </p>
+            </div>
+        </section>
+        
+    </main>
+{% endblock %}
+{% block script %}
+    <script>
+        const passwordFields = document.querySelectorAll("input[type='password']");
+        const eyeBtn = document.querySelector(".form__password--input ion-icon");
+
+        eyeBtn.addEventListener('click', () => {
+            if(passwordFields[0].getAttribute('type') === "password") {
+                passwordFields.forEach(field => field.setAttribute("type", "text"))
+                eyeBtn.setAttribute("name", 'eye-off');
+            }
+            else {
+                passwordFields.forEach(field => field.setAttribute("type", "password"))
+                eyeBtn.setAttribute("name", 'eye');
+            }
+        });
+    </script>
+{% endblock %}

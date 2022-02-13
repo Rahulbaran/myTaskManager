@@ -118,11 +118,9 @@
         navShowBtn?.addEventListener('click', () => {
             mainNavigation.classList.add('navigation--show');
         });
-
         navHideBtn?.addEventListener('click', () => {
             mainNavigation.classList.remove('navigation--show');
         });
-
 
         // CHANGE MODE FUNCTIONALITY
         const toggler = document.querySelector('.color__mode--toggler');
@@ -146,6 +144,15 @@
                 document.documentElement.classList.add("dark--mode");
             }
         };
+
+        // CHECKING FOR BROWSER PREFERENCE OF COLOR MODE
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        if(mediaQuery.matches) {
+            localStorage.setItem("color-mode","dark")
+            toggleBall.classList.add('toggler__ball--dark');
+            toggler.classList.add('color__mode--toggler--dark');
+            document.documentElement.classList.add("dark--mode");
+        }
 
     </script>
 </body>
