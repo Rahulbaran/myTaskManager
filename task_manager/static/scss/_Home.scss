@@ -73,6 +73,10 @@
       font: {
         size: $base-font * 2;
       }
+
+      span {
+        color: var(--color-limegreen);
+      }
     }
 
     h5 {

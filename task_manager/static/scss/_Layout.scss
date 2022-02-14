@@ -144,9 +144,9 @@ header {
   }
 
   &__link {
-    font-weight: var(--font-wt-500);
     transition: background 300ms ease;
     color: var(--clr-blue-900);
+    font-weight: var(--font-wt-500);
 
     &:hover,
     &:focus {
@@ -160,7 +160,56 @@ header {
   }
 }
 
-/*!=========== MEDIA QUERIES ============*/
+/*!============ FLASHED MESSAGES STYLING ============*/
+.msg--container {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.msg__type {
+  padding: $base-padding * 0.75 $base-padding;
+  font-family: var(--font-lato);
+
+  span {
+    letter-spacing: 0.5px;
+  }
+
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-inline-start: $base-margin;
+    font-size: $base-font * 1.025;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+      cursor: pointer;
+    }
+  }
+
+  &--warning {
+    background-color: var(--warning-bg-color);
+
+    span,
+    button {
+      color: var(--error-clr);
+    }
+  }
+
+  &--info {
+    background-color: var(--info-bg-color);
+
+    span,
+    button {
+      color: var(--clr-blue-600);
+    }
+  }
+}
+
+/*!=============== MEDIA QUERIES =================*/
 @media all and (min-width: 720px) {
   html {
     font-size: 100%;

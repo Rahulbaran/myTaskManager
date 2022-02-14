@@ -1,11 +1,11 @@
-import os
+import os, datetime
 from dotenv import load_dotenv
 
 load_dotenv(os.path.abspath(".env"))
 baseDir = os.path.abspath("task_manager")
 
 
-# Configuration For Applications
+# Configurations For Application
 class BaseConfig:
     """
     BaseConfig class contains all the basic configuration which are
@@ -18,6 +18,7 @@ class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
+    REMEMBER_COOKIE_DURATION = datetime.timedelta(133)
 
 
 class DevConfig(BaseConfig):

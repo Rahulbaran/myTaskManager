@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms.validators import EqualTo, DataRequired, ValidationError, Length
-from wtforms.fields.simple import StringField, EmailField, PasswordField, SubmitField
+from wtforms.fields.simple import StringField, EmailField, PasswordField, SubmitField, BooleanField
 from .models import User
 
 
@@ -60,6 +60,7 @@ class LoginForm(FlaskForm):
         "Password",
         validators=[DataRequired(), Length(min=8, max=30, message="password should be 8 to 30 characters long")],
     )
+    remember_me = BooleanField("Remember Me")
     submit = SubmitField("Login")
 
     # * Custom Validators

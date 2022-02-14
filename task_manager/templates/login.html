@@ -25,6 +25,14 @@
             cursor:pointer;
         }
 
+        .form__remember--group {
+            margin-block-start:.25rem;
+        }
+
+        .form__remember--group label {
+            margin-inline-start:.2rem;
+        }
+
         .forgot__password--link {
             margin-block-start:.25rem;
             display:inline-block;
@@ -77,8 +85,13 @@
                     {% endif %}
                 </div>
 
+                <div class="form__remember--group">
+                    {{form.remember_me}}
+                    {{form.remember_me.label}}
+                </div>
+
                 <div class="form__submit--group">
-                    {{form.submit(class="btn btn--limegreen btn--hover--limegreen--light--2 txt-darkblue")}}
+                    {{form.submit(class="btn-limegreen txt-darkblue")}}
                 </div>
             </form>
 

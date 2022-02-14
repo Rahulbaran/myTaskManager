@@ -68,16 +68,9 @@
       padding: $base-padding * 1.2 $base-padding;
     }
 
-    label,
     input {
       letter-spacing: 0.5px;
       color: var(--form-label-clr);
-    }
-
-    label {
-      font-size: $base-font * 0.85;
-      line-height: 1.3;
-      font-weight: var(--font-wt-500);
     }
 
     input {
@@ -98,6 +91,14 @@
       color: var(--error-clr);
       font-weight: var(--font-wt-500);
     }
+  }
+
+  :is(&__group, &__remember--group) label {
+    letter-spacing: 0.5px;
+    color: var(--form-label-clr);
+    font-size: $base-font * 0.85;
+    line-height: 1.3;
+    font-weight: var(--font-wt-500);
   }
 
   &__submit--group input {

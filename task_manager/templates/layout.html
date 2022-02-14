@@ -80,10 +80,10 @@
                     <a href="{{url_for('home')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='home' else ''}} txt-primary" title='Home'>Home</a>
                 </li>
                 <li>
-                    <a href="{{url_for('login')}}" class="navigation__tab btn btn--limegreen btn--hover--limegreen--light--2 txt-darkblue" title='Login'>Login</a>
+                    <a href="{{url_for('login')}}" class="navigation__tab btn-limegreen txt-darkblue" title='Login'>Login</a>
                 </li>
                 <li>
-                    <a href="{{url_for('signup')}}" class="navigation__tab btn btn--primary--dark--1 btn--hover--primary--light--1 txt-white" title='Signup'>Signup</a>
+                    <a href="{{url_for('signup')}}" class="navigation__tab btn-primary txt-white" title='Signup'>Signup</a>
                 </li>
                 <li class="color__mode--toggler">
                     <ion-icon name="sunny"></ion-icon>
@@ -93,6 +93,23 @@
             </ul>
         </nav>
     </header>
+
+
+    <!--------------- FLASH MESSAGES -------------->
+    {% with messages=get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <div class="msg--container">
+    {% for cat,msg in messages %}
+        <div class="msg__type msg__type--{{cat}}">
+            <span class="{{cat}}__msg">{{msg}}</span>
+            <button class="{{cat}}__btn">&#10006;</button>
+        </div>
+        
+    {% endfor %}
+    </div>
+    
+    {% endif %}
+    {% endwith %}
 
     <!--------- BLOCK FOR BODY CONTENTS ---------->
     {% block body %}
@@ -153,6 +170,14 @@
             toggler.classList.add('color__mode--toggler--dark');
             document.documentElement.classList.add("dark--mode");
         }
+
+        // FUNCTIONALITY TO HIDE FLASHED MESSAGES
+        const msgTypes = document.querySelectorAll('.msg__type');
+        msgTypes.forEach(msg => {
+            msg.querySelector("button").addEventListener('click', () => {
+                msg.style.display = 'none';
+            });
+        });
 
     </script>
 </body>
