@@ -1,6 +1,16 @@
+# Dependencies Folders
 node_modules
-.vscode
-.env
 virtual/
 venv/
+
+# VSCode Cache
+.vscode
+
+# Others Cache
 __pycache__
+.DS_Store
+
+# Environment Variables File
+.env
+
+

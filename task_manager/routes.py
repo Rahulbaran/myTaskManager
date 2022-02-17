@@ -12,6 +12,11 @@ def home():
     return render_template("home.html", title="Homepage")
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html", title="About")
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if current_user.is_authenticated:
@@ -50,3 +55,9 @@ def logout():
     logout_user()
     flash("You have logout successfully", "info")
     return redirect(url_for("home"))
+
+
+@app.route("/settings")
+@login_required
+def settings():
+    return render_template("settings.html", title="Settings")

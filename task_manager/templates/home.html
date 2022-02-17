@@ -1,7 +1,58 @@
 {% extends 'layout.html' %}
 {% set active_page='home' %}
 
+{% block style %}
+    <style>
+        .form--container {
+            min-block-size: 60vh;
+        }
+        textarea {
+            resize: vertical;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
+{% if current_user.is_authenticated %}
+    <main class="form--container new--note--form--container">
+        <section>
+            <h1>Add new note</h1>
+
+            <form class="form" autocomplete="off" spellcheck="false">
+
+                <div class="form__group">
+                    <label for="title">Title</label>
+                    <input type="text" required name="title" id="title" placeholder="enter note title">
+                </div>
+
+                <div class="form__group">
+                    <label for="content">Content</label>
+                    <textarea rows="7" minlength="10" maxlength="500" placeholder="enter note content"></textarea>
+                </div>
+
+                <div class="form__submit--group">
+                    <input type="submit" class="btn-limegreen txt-darkblue" value="Create Note">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <section class="notes--container">
+        <div class="notes__cards">
+            <article class="note__card">
+                <h3 class="note__card--title">
+                    Buy Tomato From a Kirana
+                </h3>
+            </article>
+
+            <article class="note__card">
+                <h3 class="note__card--title">
+                    Fill water in the tank
+                </h3>
+            </article>
+        </div>
+    </section>
+{% else %}
     <main class="container container--home--main">
         
         <section class="container__text--wrapper">
@@ -63,6 +114,7 @@
             <img src="{{url_for('static',filename='site-images/Celebrating-Success.png')}}" alt="Illustration showing success in career">
         </div>
     </section>
+{% endif %}
 {% endblock %}
 
 {% block script %}

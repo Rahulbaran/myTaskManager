@@ -56,7 +56,8 @@
     @include flex(flex-start, flex-start, column);
 
     @supports (min-inline-size: 100%) and (padding-inline: 0.5rem) {
-      input {
+      input,
+      textarea {
         min-inline-size: 100%;
         padding-inline: $base-padding;
         padding-block: $base-padding * 1.2;
@@ -64,21 +65,22 @@
     }
 
     @supports not ((min-inline-size: 100%) and (padding-inline: 0.5rem)) {
-      min-width: 100%;
-      padding: $base-padding * 1.2 $base-padding;
+      input,
+      textarea {
+        min-width: 100%;
+        padding: $base-padding * 1.2 $base-padding;
+      }
     }
 
-    input {
-      letter-spacing: 0.5px;
-      color: var(--form-label-clr);
-    }
-
-    input {
+    input,
+    textarea {
       font-size: $base-font * 0.95;
       border-radius: var(--rad-4);
       border: 1px solid var(--clr-blue-100);
       font-family: "Lato", sans-serif;
       background-color: var(--form-input-bg-clr);
+      letter-spacing: 0.5px;
+      color: var(--form-label-clr);
     }
 
     .form__input--error {

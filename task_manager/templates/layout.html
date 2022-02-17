@@ -79,15 +79,30 @@
                 <li>
                     <a href="{{url_for('home')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='home' else ''}} txt-primary" title='Home'>Home</a>
                 </li>
+
+                <li>
+                    <a href="{{url_for('about')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='about' else ''}} txt-primary" title='About'>About</a>
+                </li>
+
+                {% if current_user.is_authenticated %}
+                <li>
+                    <a href="{{url_for('settings')}}" class="navigation__tab navigation__link {{'navigation__tab--active' if active_page=='settings' else ''}} txt-primary" title='Settings'>Settings</a>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}" class="navigation__tab btn-limegreen txt-darkblue" title='Logout'>Logout</a>
+                </li>
+                
+                {% else %}
                 <li>
                     <a href="{{url_for('login')}}" class="navigation__tab btn-limegreen txt-darkblue" title='Login'>Login</a>
                 </li>
                 <li>
                     <a href="{{url_for('signup')}}" class="navigation__tab btn-primary txt-white" title='Signup'>Signup</a>
                 </li>
+                {% endif %}
                 <li class="color__mode--toggler">
-                    <ion-icon name="sunny"></ion-icon>
                     <ion-icon name="moon"></ion-icon>
+                    <ion-icon name="sunny"></ion-icon>
                     <span title='Change Color Mode' class="toggler__ball"></span>
                 </li>
             </ul>

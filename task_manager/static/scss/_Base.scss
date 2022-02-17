@@ -42,7 +42,8 @@ html {
   --error-clr: rgb(209, 20, 20);
   --warning-bg-color: hsl(0, 100%, 85%);
   --info-bg-color: hsl(220, 62%, 72%);
-  --color-limegreen: #80e61a;
+  --limegreen-color: #80e61a;
+  --light-yellow-color: #d9f733;
 
   /*!=========== FONT STACKS =============*/
   --font-lato: "Lato", sans-serif;
@@ -81,6 +82,7 @@ body {
   font: var(--font-wt-400) $base-font / var(--body-lh) var(--font-montserrat);
   background: linear-gradient(50deg, var(--body-bg-color-1), var(--body-bg-color-2));
   position: relative;
+  min-height: 100vh;
 }
 
 @supports (block-size: 13px) and (inline-size: 13px) {
