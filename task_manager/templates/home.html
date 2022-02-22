@@ -4,7 +4,7 @@
 {% block style %}
     <style>
         .form--container {
-            min-block-size: 60vh;
+            min-block-size: 55vh;
         }
         textarea {
             resize: vertical;
@@ -27,7 +27,7 @@
 
                 <div class="form__group">
                     <label for="content">Content</label>
-                    <textarea rows="7" minlength="10" maxlength="500" placeholder="enter note content"></textarea>
+                    <textarea rows="4" minlength="10" maxlength="500" placeholder="enter note content" title="Upto 500 characters are allowed"></textarea>
                 </div>
 
                 <div class="form__submit--group">
@@ -38,18 +38,89 @@
     </main>
 
     <section class="notes--container">
+        <div class="notes--heading">
+            <h2>Notes</h2>
+        </div>
+        
         <div class="notes__cards">
-            <article class="note__card">
-                <h3 class="note__card--title">
-                    Buy Tomato From a Kirana
-                </h3>
-            </article>
+            <!-- <div class="note__card" id="note__card--1">
+                <div>
+                    <span class="note__date">10/04/2021</span>
+                    <button class="note__delete--btn">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="note__card--title">
+                        Buy Tomato From a Kirana
+                    </h3>
 
-            <article class="note__card">
-                <h3 class="note__card--title">
-                    Fill water in the tank
-                </h3>
-            </article>
+                    <p class="note__card--content">
+                        Mummy told me to buy 1kg tomato
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        
+                    </p>
+                </div>
+            </div>
+
+            <div class="note__card" id="note__card--1">
+                <div>
+                    <span class="note__date">10/04/2021</span>
+                    <button class="note__delete--btn">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="note__card--title">
+                        Buy Tomato From a Kirana
+                    </h3>
+
+                    <p class="note__card--content">
+                        Mummy told me to buy 1kg tomato
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        
+                    </p>
+                </div>
+            </div>
+
+            <div class="note__card" id="note__card--1">
+                <div>
+                    <span class="note__date">10/04/2021</span>
+                    <button class="note__delete--btn">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="note__card--title">
+                        Buy Tomato From a Kirana
+                    </h3>
+
+                    <p class="note__card--content">
+                        Mummy told me to buy 1kg tomato
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        
+                    </p>
+                </div>
+            </div>
+
+            <div class="note__card" id="note__card--1">
+                <div>
+                    <span class="note__date">10/04/2021</span>
+                    <button class="note__delete--btn">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="note__card--title">
+                        Buy Tomato From a Kirana
+                    </h3>
+
+                    <p class="note__card--content">
+                        Mummy told me to buy 1kg tomato
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </p>
+                </div>
+            </div> -->
         </div>
     </section>
 {% else %}

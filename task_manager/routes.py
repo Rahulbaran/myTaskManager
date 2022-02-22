@@ -42,7 +42,7 @@ def login():
         if user and user.check_password(form.password.data):
             next = request.args.get("next")
             login_user(user, remember=form.remember_me.data)
-            flash("Welcome, You have logged in", "info")
+            flash(f"Welcome {user.fullname}, You have logged in", "info")
             return redirect(next) if next else redirect(url_for("home"))
         else:
             flash("Either email or password is wrong", "warning")
