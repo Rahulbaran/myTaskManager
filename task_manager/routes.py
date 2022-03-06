@@ -2,14 +2,29 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from . import app, db, bcrypt
 from .form import SignUpForm, LoginForm
-from .models import User
+from .models import User, Note
 
 
 # ROUTES
 @app.route("/")
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 def home():
-    return render_template("home.html", title="Homepage")
+    notes = ""
+    if current_user.is_authenticated:
+        notes = Note.query.filter_by(userNote=current_user).order_by(Note.id.desc()).all()
+        if request.method == "POST":
+            noteData = request.get_json()
+            newNote = Note(title=noteData.get("title"), content=noteData.get("content"), user_id=current_user.id)
+            db.session.add(newNote)
+            db.session.commit()
+            note = Note.query.filter_by(user_id=current_user.id).order_by(Note.id.desc()).first()
+            return {
+                "id": note.id,
+                "title": note.title,
+                "content": note.content,
+                "note_date": note.created_on.strftime("%d/%m/%Y"),
+            }
+    return render_template("home.html", title="Homepage", notes=notes)
 
 
 @app.route("/about")

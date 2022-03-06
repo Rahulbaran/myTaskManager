@@ -142,7 +142,7 @@
 
     <!----------- CUSTOM SCRIPT ----------->
     <script>
-        //  NAVIGATION TOGGLING FUNCTIONALITY
+        // * NAVIGATION TOGGLING FUNCTIONALITY
         const mainNavigation = document.querySelector('.navigation--main');
         const navShowBtn = document.querySelector('.navigation__show--btn');
         const navHideBtn = document.querySelector('.navigation__hide--btn');
@@ -154,7 +154,7 @@
             mainNavigation.classList.remove('navigation--show');
         });
 
-        // CHANGE MODE FUNCTIONALITY
+        // * CHANGE MODE FUNCTIONALITY
         const toggler = document.querySelector('.color__mode--toggler');
         const toggleBall = document.querySelector('.toggler__ball');
 
@@ -177,7 +177,7 @@
             }
         };
 
-        // CHECKING FOR BROWSER PREFERENCE OF COLOR MODE
+        // * CHECKING FOR BROWSER PREFERENCE OF COLOR MODE
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
         if(mediaQuery.matches) {
             localStorage.setItem("color-mode","dark")
@@ -186,7 +186,7 @@
             document.documentElement.classList.add("dark--mode");
         }
 
-        // FUNCTIONALITY TO HIDE FLASHED MESSAGES
+        // * FUNCTIONALITY TO HIDE FLASHED MESSAGES
         const msgTypes = document.querySelectorAll('.msg__type');
         msgTypes.forEach(msg => {
             msg.querySelector("button").addEventListener('click', () => {

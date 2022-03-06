@@ -202,8 +202,20 @@
 
 /*!================== MEDIA QUERIES ====================*/
 @media all and (max-width: 640px) {
-  .notes--container > div:last-child .note__card {
-    width: 20rem;
+  .notes--container {
+    margin-block-end: $base-margin * 2;
+
+    > div:last-child .note__card {
+      width: 20rem;
+    }
+
+    > div:first-child {
+      margin-bottom: $base-margin * 2.5;
+    }
+
+    h2 {
+      line-height: calc(var(--body-lh) * 0.65);
+    }
   }
 }
 @media all and (min-width: 720px) {
